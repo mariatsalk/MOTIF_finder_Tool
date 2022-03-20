@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+ <head>
+   <title>Motif finder</title>
+   <style>
+   .button {
+     background-color: #008CBA; /* Blue */
+     border: none;
+     color: white;
+     padding: 16px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 4px 2px;
+     transition-duration: 0.4s;
+     cursor: pointer;
+   }
+   .button2 {
+     background-color: #008CBA;
+     color: white;
+     border: 2px solid #008CBA;
+     border-radius: 2px;
+   }
+
+   .button2:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    border-radius: 2px;
+  }
+  .button3 {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #4CAF50;
+    border-radius: 2px;
+  }
+
+  .button3:hover {
+   background-color: white;
+   color: black;
+   border: 2px solid #4CAF50;
+   border-radius: 2px;
+ }
+  </style>
+ </head>
+
+ <body >
+  <div style="line-height: 2.0;">
+    <!--add the header-->
+    <h1 style="text-align:center; background-color: powderblue" >Motif finder</h1>
+    <p style="text-align:left; font-size:120%;">This program can scan a set of sequences for matches to each of the motifs provided.</p>
+  </div>
+
+<!-- get submittion of motif sequence or file and the fasta file-->
+  <form id="upload-form"  method="POST" enctype="multipart/form-data" >
+
+    <div style="background-color: aliceblue;">
+      <!--textbox or upload file options for the motif-->
+      <p>Input your motif(s) (For multiple motifs separate them by new lines or semicolons ';')</p>
+      <textarea name="motif" cols="50" rows="3" style="font-size:18px;"></textarea>
+      <br />
+      <p> Or upload a file with motifs in a column (Allowed file
+        format: all file formats) </p>
+      <input type="file" id="upload" name="motif_file" lang="en"/> <br />  <br />
+      <br />
+      <br />
+      <!--upload file option for the fasta sequences-->
+      <p> Upload a fasta file with sequences for scanning(Allowed file
+        format: fasta file - fasta\fna\fa\faa) </p>
+      <input type="file" accept=".fasta,.fna,.fa,.faa" id="upload" name="fastafile" lang="en"/> <br />  <br />
+      <p> <b>Tips</b>: Both of uppercase or lowercase nucleotide in the input text\file are allowed.</p>
+        <br />
+    </div>
+
+    <br />
+    <!-- add a reset button that user can reset the value and a sybmission button for submitting the input data-->
+    <button class="button button3" type="reset" value="Reset">Reset</button>
+    <button class="button button2" type="submit" value="Submit">Submit</button>
+    <p>If you need change the input values, click the "Reset" button,
+   the form-data will be reset to the blank.</p>
+   <p> <b>Tips</b>: You can download the produced table and fasta files that contain <b>only</b> the sequences that have the motif.</p>
+
+  </form>
+
+ </body>
+</html>

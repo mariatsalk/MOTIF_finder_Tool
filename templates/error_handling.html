@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+   <title>Motif finder</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+   .btn2 {
+     background-color: #80c3ff;
+     border: none;
+     color: white;
+     padding: 12px 30px;
+     cursor: pointer;
+     font-size: 14px;
+     border-radius: 4px;
+   }
+   /* Darker background on mouse-over */
+   .btn2:hover {
+     background-color: #4dacff;
+   }
+   </style>
+  </head>
+
+  <body style="line-height: 2.0;">
+    <!--add the header-->
+    <h1 style="text-align:center; background-color: powderblue" >Motif finder</h1>
+    <!--print the error message-->
+    <h2>{{message}}</h2>
+    <!--provide a button to go back to the submission page and start again-->
+    <button onclick="history.back()" class="btn2">Back to the submission page</button>
+  </body>
+</html>

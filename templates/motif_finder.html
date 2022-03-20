@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+ <head>
+   <title>Motif finder</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add icon library -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <style>
+   .btn {
+     top:14.5%;
+     left:85%;
+     width:200px;
+     height:50px;
+     position: absolute;
+     z-index: 2;
+     background-color: #80c3ff;
+     border: none;
+     color: white;
+     padding: 10px 20px;
+     cursor: pointer;
+     font-size: 16px;
+     border-radius: 4px;
+   }
+   /* Darker background on mouse-over */
+   .btn:hover {
+     background-color: #4dacff;
+   }
+   .btn2 {
+     background-color: #80c3ff;
+     border: none;
+     color: white;
+     padding: 12px 30px;
+     cursor: pointer;
+     font-size: 14px;
+     border-radius: 4px;
+   }
+   /* Darker background on mouse-over */
+   .btn2:hover {
+     background-color: #4dacff;
+   }
+   .btn3 {
+     top:14.5%;
+     left:70%;
+     width:200px;
+     height:50px;
+     position: absolute;
+     z-index: 2;
+     background-color: #80c3ff;
+     border: none;
+     color: white;
+     padding: 10px 20px;
+     cursor: pointer;
+     font-size: 16px;
+     border-radius: 4px;
+   }
+   /* Darker background on mouse-over */
+   .btn3:hover {
+     background-color: #4dacff;
+   }
+   </style>
+ </head>
+
+  <body style="line-height: 2.0;">
+  <!--add the header-->
+  <h1 style="text-align:center; background-color: powderblue" >Motif finder</h1>
+
+    <div>
+    <!-- set a button to go back to the submission page -->
+      <button onclick="history.back()" class="btn2">Back to the submission page</button>
+    </div>
+
+    <!-- set a link that can download output results on the web page -->
+    <button class="btn"><i class="fa fa-download"></i><a href="{{ url_for('static', filename='motif_info.tsv') }}" download="motif-info.tsv">Download results</a></button>
+    <!-- set a link that can download output fasta files on the web page -->
+    <button class="btn3"><i class="fa fa-download"></i><a href="./static/FASTA_files.zip">Download the FASTA files</a></button>
+
+
+    <div style="background-color:azure;">
+      <p style="font-size:110%;"><b> General information </b></p>
+      <p style="font-size:110%;">A total of <b>{{number_seq}}</b> fasta sequences were scanned.</p>
+      {% for m in motif_name %}
+        <p style="font-size:110%;">The motif {{ m }} was found in <b>{{ ab_motifs[m] }}</b> sequences.</p>
+      {% endfor %}
+    </div>
+
+
+
+<!-- show results of this function on the web page -->
+    <div style="background-color: aliceblue;">
+      {% for y in motif_name %}
+        <p style="font-size:110%;"><b>##{{ y }}</b></p>
+          <table style="width:100%; text-align:center; vertical-align: middle;">
+            <thead>
+              <!-- add the header of table through loop -->
+              {% for i in header %}
+                <th >{{ i }}</th>
+                {% endfor %}
+            </thead>
+            <tbody>
+              <!-- add each row of results into the table through loop -->
+              {% for j in motif_output[y] %}
+                {% for r in j %}
+                  <tr>
+                    <td rowspan="3">{{ r }}</td>
+                  </tr>
+                {% endfor %}
+              {% endfor %}
+            </tbody>
+        </table>
+      {% endfor %}
+    </div>
+
+  </body>
+
+</html>
